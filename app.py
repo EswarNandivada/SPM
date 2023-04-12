@@ -6,10 +6,16 @@ from cmail import sendmail
 import random
 from db import dbconn
 from io import BytesIO
+import os
 app=Flask(__name__)
 app.secret_key='*67@hjyjhk'
 app.config['SESSION_TYPE']='filesystem'
-mydb=mysql.connector.connect(host='spm-flask.cbnuovsxygzn.ap-northeast-1.rds.amazonaws.com',user='admin',password='Eswar2001',database='spm')
+db=os.environ['RDS_DB_NAME']
+user=os.environ['RDS_USERNAME']
+password=os.environ['RDS_PASSWORD']
+host=os.environ['RDS_HOSTNAME']
+port=os.environ['RDS_PORT']
+mydb=mysql.connector.connect(host=host,user=user,password=password,db=db,port=port)
 #mydb=mysql.connector.connect(host='localhost',user='root',password='Eswar@2001',db='spm')
 
 Session(app)
