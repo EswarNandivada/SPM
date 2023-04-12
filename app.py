@@ -4,7 +4,6 @@ from otp import genotp
 import mysql.connector
 from cmail import sendmail
 import random
-from db import dbconn
 from io import BytesIO
 import os
 app=Flask(__name__)
