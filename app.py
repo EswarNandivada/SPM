@@ -262,6 +262,7 @@ def createpassword():
         return redirect(url_for('login'))
 if __name__=="__main__":
     dbconn()
+    print('hello')
     app.run()
 
 
