@@ -9,7 +9,7 @@ from io import BytesIO
 app=Flask(__name__)
 app.secret_key='*67@hjyjhk'
 app.config['SESSION_TYPE']='filesystem'
-mydb=mysql.connector.connect(host='spm-flask.cbnuovsxygzn.ap-northeast-1.rds.amazonaws.com',user='admin',password='Eswar2001',db='spm')
+mydb=mysql.connector.connect(host='spm-flask.cbnuovsxygzn.ap-northeast-1.rds.amazonaws.com',user='admin',password='Eswar2001',database='spm')
 #mydb=mysql.connector.connect(host='localhost',user='root',password='Eswar@2001',db='spm')
 
 Session(app)
