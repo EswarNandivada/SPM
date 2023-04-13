@@ -247,22 +247,20 @@ def forget():
     return render_template('forgot.html')
 @app.route('/createpassword',methods=['GET','POST'])
 def createpassword():
-    if session.get('pass'):
-        if request.method=='POST':
-            oldp=request.form['npassword']
-            newp=request.form['cpassword']
-            if oldp==newp:
-                cursor=mydb.cursor(buffered=True)
-                cursor.execute('update students set password=%s where rollno=%s',[newp,session.get('pass')])
-                mydb.commit()
-                flash('Password changed successfully')
-                return redirect(url_for('login'))
-            else:
-                flash('New password and confirm passwords should be same')
-                return render_template('newpassword.html')
-        return render_template('newpassword.html')
-    else:
-        return redirect(url_for('login'))
+    if request.method=='POST':
+        oldp=request.form['npassword']
+        newp=request.form['cpassword']
+        if oldp==newp:
+            cursor=mydb.cursor(buffered=True)
+            cursor.execute('update students set password=%s where rollno=%s',[newp,session.get('pass')])
+            mydb.commit()
+            flash('Password changed successfully')
+            return redirect(url_for('login'))
+        else:
+            flash('New password and confirm passwords should be same')
+            return render_template('newpassword.html')
+    return render_template('newpassword.html')
+    
 if __name__=="__main__":
     app.run()
 
