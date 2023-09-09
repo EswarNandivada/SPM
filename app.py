@@ -9,7 +9,7 @@ import os
 app=Flask(__name__)
 app.secret_key='*67@hjyjhk'
 app.config['SESSION_TYPE']='filesystem'
-db=os.environ['RDS_DB_NAME']
+db= os.environ['RDS_DB_NAME']
 user=os.environ['RDS_USERNAME']
 password=os.environ['RDS_PASSWORD']
 host=os.environ['RDS_HOSTNAME']
