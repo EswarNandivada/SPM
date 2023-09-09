@@ -21,6 +21,7 @@ with mysql.connector.connect(host=host,user=user,password=password,db=db,port=po
     cursor.execute('create table if not exists students(rollno varchar(6) primary key,name varchar(30),std_group varchar(10),password varchar(15),email varchar(70))')
     cursor.execute('create table if not exists notes(nid int primary key auto_increment,rollno varchar(6),title varchar(30),content text,date datetime default now(),foreign key(rollno) references students(rollno))')
     cursor.execute('create table if not exists files(fid int primary key auto_increment,rollno varchar(6),filename varchar(30),filedata longblob,date datetime default now(),foreign key(rollno) references students(rollno))')
+mydb=mysql.connector.connect(host=host,user=user,password=password,db=db,port=port)
 Session(app)
 @app.route('/')
 def index():
